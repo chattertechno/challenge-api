@@ -3,7 +3,6 @@ package controllers
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -48,11 +47,9 @@ var RegisterUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request
 		return
 	}
 	user.Password = passwordHash
-	fmt.Println(passwordHash)
 	result, err := collection.InsertOne(r.Context(), user)
 	if err != nil {
 		middlewares.ServerErrResponse(err.Error(), rw)
-
 		return
 	}
 	res, _ := json.Marshal(result.InsertedID)
@@ -69,7 +66,7 @@ var LoginUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 	}
 	collection := client.Database("challenge").Collection("users")
 	var existingUser models.User
-	err = collection.FindOne(r.Context(), bson.D{primitive.E{Key: "username", Value: user.Username}}).Decode(&existingUser)
+	err = collection.FindOne(r.Context(), bson.D{primitive.E{Key: "identity", Value: user.Identity}}).Decode(&existingUser)
 	if err != nil {
 		middlewares.ErrorResponse("User doesn't exist", rw)
 		return

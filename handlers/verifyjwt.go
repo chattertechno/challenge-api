@@ -21,7 +21,6 @@ type Claims struct {
 func IsAuthorized(next http.Handler) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		authHeader := strings.Split(r.Header.Get("Authorization"), "Bearer ")
-		fmt.Println(authHeader)
 
 		if len(authHeader) != 2 {
 			AuthorizationResponse("Malformed JWT token", w)
