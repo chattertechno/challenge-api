@@ -4,8 +4,8 @@ import (
 	"context"
 	"log"
 
+	middlewares "github.com/chattertechno/challenge-platform-api/handlers"
 	"github.com/fatih/color"
-	middlewares "github.com/gaquarius/challenge-platform-api/handlers"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )

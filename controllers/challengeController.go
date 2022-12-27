@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	middlewares "github.com/gaquarius/challenge-platform-api/handlers"
-	"github.com/gaquarius/challenge-platform-api/models"
+	middlewares "github.com/chattertechno/challenge-platform-api/handlers"
+	"github.com/chattertechno/challenge-platform-api/models"
 	"github.com/gorilla/mux"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"

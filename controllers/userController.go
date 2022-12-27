@@ -3,17 +3,18 @@ package controllers
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
 	"os"
 	"strings"
 
+	"github.com/chattertechno/challenge-platform-api/db"
+	middlewares "github.com/chattertechno/challenge-platform-api/handlers"
+	"github.com/chattertechno/challenge-platform-api/models"
+	"github.com/chattertechno/challenge-platform-api/validators"
 	"github.com/dgrijalva/jwt-go"
-	"github.com/gaquarius/challenge-platform-api/db"
-	middlewares "github.com/gaquarius/challenge-platform-api/handlers"
-	"github.com/gaquarius/challenge-platform-api/models"
-	"github.com/gaquarius/challenge-platform-api/validators"
 	"github.com/gorilla/mux"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -47,9 +48,11 @@ var RegisterUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request
 		return
 	}
 	user.Password = passwordHash
+	fmt.Println(passwordHash)
 	result, err := collection.InsertOne(r.Context(), user)
 	if err != nil {
 		middlewares.ServerErrResponse(err.Error(), rw)
+
 		return
 	}
 	res, _ := json.Marshal(result.InsertedID)

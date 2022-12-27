@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/gaquarius/challenge-platform-api/models"
+	"github.com/chattertechno/challenge-platform-api/models"
 )
 
 // AuthorizationResponse -> response authorize

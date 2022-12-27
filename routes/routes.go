@@ -3,8 +3,8 @@ package routes
 import (
 	"net/http"
 
-	"github.com/gaquarius/challenge-platform-api/controllers"
-	middlewares "github.com/gaquarius/challenge-platform-api/handlers"
+	"github.com/chattertechno/challenge-platform-api/controllers"
+	middlewares "github.com/chattertechno/challenge-platform-api/handlers"
 	"github.com/gorilla/mux"
 )
 
