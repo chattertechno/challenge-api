@@ -66,7 +66,8 @@ var LoginUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 	}
 	collection := client.Database("challenge").Collection("users")
 	var existingUser models.User
-	err = collection.FindOne(r.Context(), bson.D{primitive.E{Key: "identity", Value: user.Identity}}).Decode(&existingUser)
+	err = collection.FindOne(r.Context(), bson.D{primitive.E{Key: "username", Value: user.Username}}).Decode(&existingUser)
+
 	if err != nil {
 		middlewares.ErrorResponse("User doesn't exist", rw)
 		return

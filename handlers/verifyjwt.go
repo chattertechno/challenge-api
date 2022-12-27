@@ -21,6 +21,7 @@ type Claims struct {
 func IsAuthorized(next http.Handler) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		authHeader := strings.Split(r.Header.Get("Authorization"), "Bearer ")
+		fmt.Println(authHeader)
 
 		if len(authHeader) != 2 {
 			AuthorizationResponse("Malformed JWT token", w)
@@ -45,6 +46,7 @@ func IsAuthorized(next http.Handler) http.HandlerFunc {
 
 // GenerateJWT -> generate jwt
 func GenerateJWT(username string) (string, error) {
+	fmt.Println(`this is user`, username)
 	claims := &Claims{
 		Username: username,
 		StandardClaims: jwt.StandardClaims{
@@ -55,6 +57,7 @@ func GenerateJWT(username string) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
 	tokenString, err := token.SignedString(JWT_SECRET)
+	fmt.Println(`this is it`, tokenString)
 
 	if err != nil {
 		return "", err
