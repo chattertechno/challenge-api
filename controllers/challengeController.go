@@ -136,3 +136,8 @@ var UpdateChallenge = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Requ
 var DeleteChallenge = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 
 })
+
+// TO-DO USER TO JOIN THE CHALLENGE
+var JoinChallenge = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+
+})

@@ -21,6 +21,7 @@ type User struct {
 	Bio      string             `json:"bio,omitempty" bson:"bio,omitempty"`
 	Avatar   string             `json:"avatar,omitempty" bson:"avatar,omitempty"`
 	Identity string             `json:"identity,omitempty" bson:"identity,omitempty"`
+	Mnemonic string             `json:"mnemonic,omitempty" bson:"mnemonic,omitempty"`
 	Password string             `json:"password,omitempty" bson:"password,omitempty"`
 }
 
@@ -46,6 +47,8 @@ type Challenge struct {
 	Name            string             `json:"name,omitempty" bson:"name,omitempty"`
 	Description     string             `json:"description,omitempty" bson:"description,omitempty"`
 	Content         string             `json:"content,omitempty" bson:"content,omitempty"`
+	Identity        string             `json:"identity,omitempty" bson:"identity,omitempty"`
+	Mnemonic        string             `json:"mnemonic,omitempty" bson:"mnemonic,omitempty"`
 	HeaderImage     string             `json:"header_image,omitempty" bson:"header_image,omitempty"`
 	Coordinator     string             `json:"coordinator,omitempty" bson:"coordinator,omitempty"`
 	CreatedAt       time.Time          `json:"created_at,omitempty" bson:"created_at,omitempty"`

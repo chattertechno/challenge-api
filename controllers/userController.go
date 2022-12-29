@@ -41,6 +41,11 @@ var RegisterUser = http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request
 		middlewares.ErrorResponse("Identity is already in use.", rw)
 		return
 	}
+	err = collection.FindOne(r.Context(), bson.D{primitive.E{Key: "mnemonic", Value: user.Mnemonic}}).Decode(&existingUser)
+	if err == nil {
+		middlewares.ErrorResponse("Mnemonic Invalid", rw)
+		return
+	}
 	passwordHash, err := middlewares.HashPassword(user.Password)
 	if err != nil {
 		middlewares.ServerErrResponse(err.Error(), rw)
